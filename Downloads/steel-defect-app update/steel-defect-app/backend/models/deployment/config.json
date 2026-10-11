@@ -1,0 +1,24 @@
+{
+  "classes": [
+    "Crazing",
+    "Inclusion",
+    "Patches",
+    "Pitted",
+    "Rolled",
+    "Scratches"
+  ],
+  "img_size": 224,
+  "imagenet_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "imagenet_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "yolo_conf": 0.24424424424424424,
+  "yolo_imgsz": 640,
+  "selected_head_on_val": "FT-CNN + LogReg"
+}
