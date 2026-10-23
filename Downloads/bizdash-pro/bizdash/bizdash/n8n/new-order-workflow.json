@@ -1,0 +1,15 @@
+{
+  "name": "New order notification",
+  "nodes": [
+    { "parameters": { "httpMethod": "POST", "path": "new-order", "options": {} },
+      "name": "New order webhook", "type": "n8n-nodes-base.webhook", "typeVersion": 2, "position": [0, 0], "webhookId": "new-order" },
+    { "parameters": { "fromEmail": "bizdash@example.com", "toEmail": "team@example.com",
+        "subject": "=[{{ $json.body.priority === 'high' ? 'URGENT' : 'New' }}] Order #{{ $json.body.order_id }} from {{ $json.body.customer }}",
+        "emailFormat": "text",
+        "text": "=Order: {{ $json.body.title }}\nAmount: {{ $json.body.amount }}\nCustomer: {{ $json.body.customer }} <{{ $json.body.customer_email }}>\nTopic: {{ $json.body.category }}\nSummary: {{ $json.body.summary }}",
+        "options": {} },
+      "name": "Email the team", "type": "n8n-nodes-base.emailSend", "typeVersion": 2.1, "position": [300, 0] }
+  ],
+  "connections": { "New order webhook": { "main": [[ { "node": "Email the team", "type": "main", "index": 0 } ]] } },
+  "settings": { "executionOrder": "v1" }
+}
